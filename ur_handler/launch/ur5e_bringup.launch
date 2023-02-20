@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="robot_ip"              value="192.168.0.103" />
+  <arg name="reverse_port"          value="50001"/>
+  <arg name="script_sender_port"    value="50002"/>
+  <arg name="trajectory_port"       value="50003"/>
+  <arg name="script_command_port"   value="50004"/>
+  <arg name="tf_prefix"             value="left_arm" />
+
+  <arg name="controllers"           value="joint_state_controller scaled_pos_joint_traj_controller speed_scaling_state_controller force_torque_sensor_controller" />
+  <arg name="stopped_controllers"   value="pos_joint_traj_controller joint_group_vel_controller" />
+  
+  <arg name="controller_config_file"   value="$(find ur_handler)/config/ur5e_controllers.yaml" />
+  <arg name="kinematics_config"        value="$(find ur_handler)/config/robot_calibration_ur5e.yaml"/>
+
+  <include file="$(find ur_robot_driver)/launch/ur5e_bringup.launch" pass_all_args="true">
+    <arg name="use_tool_communication" value="false"/>
+  </include>
+
+
+
+
+  
+  <include file= "$(find ur5e_moveit_config)/launch/moveit_planning_execution.launch" />
+  <include file= "$(find ur5e_moveit_config)/launch/moveit_rviz.launch" />
+
+  
+</launch>
