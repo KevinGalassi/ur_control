@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="tf" type="static_transform_publisher" name="world_tf_broadcaster" 
+      args="0 -0.47 0 0 0 ${pi} world base_link 100" 
+  />
+
+
+  <include file= "$(find ur5_moveit_config)/launch/demo.launch" >
+    <arg name="use_rviz" value="false" />
+  </include>
+
+
+  <include file= "$(find ur5_moveit_config)/launch/moveit_rviz.launch" >
+    <arg name="config" value="$(find ur_handler)/config/rviz/ur5.rviz" />
+  </include>
+
+
+</launch>
