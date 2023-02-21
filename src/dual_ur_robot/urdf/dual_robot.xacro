@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="my_work_cell">
+  <!--Load the macro for creating a robot-->
+  <xacro:include filename="$(find ur_description)/urdf/inc/ur5e_macro.xacro"/>
+
+  <xacro:include filename="$(find ur_description)/urdf/inc/ur5_macro.xacro"/>
+
+  <xacro:include filename="$(find robotiq_description)/urdf/robotiq_hande_gripper.urdf.xacro" />
+
+
+  <!--Instanciate the robots-->
+  <xacro:ur5e_robot prefix="leftarm_" kinematics_parameters_file="$(arg leftarm_kinematics)"/>
+  <xacro:ur5_robot prefix="rightarm_" kinematics_parameters_file="$(arg rightarm_kinematics)" />
+
+
+
+  <xacro:robotiq_hande_gripper prefix="leftarm_" parent="leftarm_tool0" >
+    <origin xyz="0.0 0 0.005" rpy="0 0 0"/>
+  </xacro:robotiq_hande_gripper>
+
+  <xacro:robotiq_hande_gripper prefix="rightarm_" parent="rightarm_tool0" >
+    <origin xyz="0.0 0 0.005" rpy="0 0 0"/>
+  </xacro:robotiq_hande_gripper>
+
+  
+
+
+  <!--common link where the tf tree originates from-->
+  <link name="world"/>
+
+  <!--Define the robot poses in the world-->
+  <joint name="world_to_leftarm" type="fixed">
+    <parent link="world" />
+    <child link = "leftarm_base_link" />
+    <origin xyz="0 -0.47 0" rpy="0 0 0" />
+  </joint>
+
+
+  <joint name="world_to_rightarm" type="fixed">
+    <parent link="world" />
+    <child link = "rightarm_base_link" />
+    <origin xyz="0 0.47 0" rpy="0 0 ${pi}" />
+  </joint>
+</robot>

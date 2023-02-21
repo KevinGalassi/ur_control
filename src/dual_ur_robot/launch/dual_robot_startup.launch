@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<launch>
+  <!--rightarm's arguments-->
+  <arg name="rightarm_kinematics"               default="$(find dual_ur_robot)/config/robot_calibration_ur5.yaml"/>
+  <arg name="rightarm_controller_config_file"   default="$(find dual_ur_robot)/etc/rightarm_controllers.yaml"/>
+  <arg name="rightarm_ip"                       default="192.168.0.102"/>
+  <arg name="rightarm_reverse_port"             default="50005"/>
+  <arg name="rightarm_script_sender_port"       default="50006"/>
+  <arg name="rightarm_trajectory_port"          default="50007"/>
+  <arg name="rightarm_script_command_port"      default="50008" />
+
+  <!--leftarm's arguments-->
+  <arg name="leftarm_kinematics"                default="$(find dual_ur_robot)/config/robot_calibration_ur5e.yaml"/>
+  <arg name="leftarm_controller_config_file"    default="$(find dual_ur_robot)/etc/leftarm_controllers.yaml"/>
+  <arg name="leftarm_ip"                        default="192.168.0.103"/>
+  <arg name="leftarm_reverse_port"              default="50001"/>
+  <arg name="leftarm_script_sender_port"        default="50002"/>
+  <arg name="leftarm_trajectory_port"           default="50003"/>
+  <arg name="leftarm_script_command_port"       default="50004" doc="Port that will be opened by the driver to allow forwarding script commands to the robot."/>
+
+  <!--common arguments-->
+  <arg name="use_tool_communication"      default="false"/>
+  <arg name="controllers"                 default="joint_state_controller scaled_pos_joint_traj_controller speed_scaling_state_controller force_torque_sensor_controller" doc="Controllers that are activated by default."/>
+  <arg name="stopped_controllers"         default="pos_joint_traj_controller joint_group_vel_controller" doc="Controllers that are initally loaded, but not started."/>
+
+  <include file="$(find dual_ur_robot)/launch/load_dual_description.launch">
+    <arg name="leftarm_kinematics"        value="$(arg leftarm_kinematics)"/>
+    <arg name="rightarm_kinematics"       value="$(arg rightarm_kinematics)"/>
+  </include>
+
+  <group ns="rightarm">
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+    <include file="$(find ur_robot_driver)/launch/ur_control.launch">
+      <arg name="use_tool_communication"  value="$(arg use_tool_communication)"/>
+      <arg name="controller_config_file"  value="$(arg rightarm_controller_config_file)"/>
+      <arg name="robot_ip"                value="$(arg rightarm_ip)"/>
+      <arg name="reverse_port"            value="$(arg rightarm_reverse_port)"/>
+      <arg name="script_sender_port" value="$(arg rightarm_script_sender_port)"/>
+      <arg name="trajectory_port" value="$(arg rightarm_trajectory_port)"/>
+      <arg name="script_command_port" value="$(arg rightarm_script_command_port)" />
+      <arg name="kinematics_config" value="$(arg rightarm_kinematics)"/>
+      <arg name="tf_prefix" value="rightarm_"/>
+      <arg name="controllers" value="$(arg controllers)"/>
+      <arg name="stopped_controllers" value="$(arg stopped_controllers)"/>
+    </include>
+  </group>
+
+  <group ns="leftarm">
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+    <include file="$(find ur_robot_driver)/launch/ur_control.launch">
+      <arg name="use_tool_communication" value="$(arg use_tool_communication)"/>
+      <arg name="controller_config_file" value="$(arg leftarm_controller_config_file)"/>
+      <arg name="robot_ip" value="$(arg leftarm_ip)"/>
+      <arg name="reverse_port" value="$(arg leftarm_reverse_port)"/>
+      <arg name="script_sender_port" value="$(arg leftarm_script_sender_port)"/>
+      <arg name="trajectory_port" value="$(arg leftarm_trajectory_port)"/>
+      <arg name="script_command_port" value="$(arg leftarm_script_command_port)" />
+      <arg name="kinematics_config" value="$(arg leftarm_kinematics)"/>
+      <arg name="tf_prefix" value="leftarm_"/>
+      <arg name="controllers" value="$(arg controllers)"/>
+      <arg name="stopped_controllers" value="$(arg stopped_controllers)"/>
+    </include>
+  </group>
+
+  <!--Convenience stuff for demo purposes-->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dual_ur_robot)/etc/view_robot.rviz" required="true" />
+
+</launch>

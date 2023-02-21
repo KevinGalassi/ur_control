@@ -1,0 +1,27 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/kvn/ros/dual_ur_ws/devel/include/**",
+        "/home/kvn/ros/ur_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/kvn/ros/dual_ur_ws/src/robotiq/robotiq_ft_sensor/include/**",
+        "/home/kvn/ros/dual_ur_ws/src/robotiq/robotiq_gazebo/include/**",
+        "/home/kvn/ros/dual_ur_ws/src/Universal_Robots_ROS_Driver/ur_calibration/include/**",
+        "/home/kvn/ros/dual_ur_ws/src/universal_robot/ur_kinematics/include/**",
+        "/home/kvn/ros/dual_ur_ws/src/Universal_Robots_ROS_Driver/ur_robot_driver/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
