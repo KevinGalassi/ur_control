@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://wiki.ros.org/xacro" name="$(arg robot_model)_robot">
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur_robot_gazebo">
   <!--
     This is a top-level xacro instantiating the Gazebo-specific version of the
     'ur_robot' macro (ie: 'ur_robot_gazebo') and passing it values for all its
@@ -45,7 +45,7 @@
     NOTE: this value must correspond to the controller configured in the
           controller .yaml files in the 'config' directory.
   -->
-  <xacro:arg name="transmission_hw_interface" default="hardware_interface/EffortJointInterface"/>
+  <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
   <xacro:arg name="safety_limits" default="false"/>
   <xacro:arg name="safety_pos_margin" default="0.15"/>
   <xacro:arg name="safety_k_position" default="20"/>
@@ -75,13 +75,6 @@
   <joint name="world_joint" type="fixed">
     <parent link="world"/>
     <child link="base_link"/>
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-  </joint>
-
-  <link name="tool0_controller"/>
-  <joint name="tool_controller_fake_joint" type="fixed">
-    <parent link="tool0"/>
-    <child link="tool0_controller"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
 </robot>

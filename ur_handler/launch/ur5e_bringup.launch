@@ -23,10 +23,10 @@
     />
 
 
-  
-  <include file= "$(find ur5e_moveit_config)/launch/moveit_planning_execution.launch" />
-  <include file= "$(find ur5_moveit_config)/launch/moveit_rviz.launch" >
-    <arg name="config" value="$(find ur_handler)/config/rviz/ur5.rviz" />
+  <include file= "$(find ur5e_moveit_config)/launch/move_group.launch" />
+
+  <include file= "$(find ur5e_moveit_config)/launch/moveit_rviz.launch" >
+    <arg name="rviz_config" value="$(find ur_handler)/config/rviz/ur5.rviz" />
   </include>
-  
+
 </launch>
