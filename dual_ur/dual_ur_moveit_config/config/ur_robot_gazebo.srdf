@@ -3,7 +3,7 @@
     This is a format for representing semantic information about the robot structure.
     A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
 -->
-<robot name="ur_robot_gazebo">
+<robot name="dual_ur">
     <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
     <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
     <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
@@ -28,18 +28,19 @@
         <joint name="rightarm_hande_left_finger_joint" />
     </group>
 
-
-    <group name="rightarm_robot">
+    <group name="dual_ur">
+        <joint name="leftarm_elbow_joint"  />
+        <joint name="leftarm_shoulder_lift_joint"  />
+        <joint name="leftarm_shoulder_pan_joint" />
+        <joint name="leftarm_wrist_1_joint" />
+        <joint name="leftarm_wrist_2_joint"  />
+        <joint name="leftarm_wrist_3_joint"  />
         <joint name="rightarm_elbow_joint"  />
         <joint name="rightarm_shoulder_lift_joint"  />
         <joint name="rightarm_shoulder_pan_joint" />
         <joint name="rightarm_wrist_1_joint" />
         <joint name="rightarm_wrist_2_joint"  />
         <joint name="rightarm_wrist_3_joint"  />
-        <joint name="rightarm_robotiq_coupler_joint" />
-        <joint name="rightarm_manipulator_dummy_joint" />
-        <joint name="rightarm_robotiq_hande_base_joint" />
-        <joint name="rightarm_hande_left_finger_joint" />
     </group>
 
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
@@ -105,9 +106,6 @@
     <disable_collisions link1="leftarm_shoulder_link" link2="leftarm_upper_arm_link" reason="Adjacent" />
     <disable_collisions link1="leftarm_shoulder_link" link2="leftarm_wrist_1_link" reason="Never" />
     <disable_collisions link1="leftarm_shoulder_link" link2="leftarm_wrist_2_link" reason="Never" />
-    <disable_collisions link1="leftarm_shoulder_link" link2="rightarm_SXR0030_M_link" reason="Never" />
-    <disable_collisions link1="leftarm_shoulder_link" link2="rightarm_SXR0030_TF4_link" reason="Never" />
-    <disable_collisions link1="leftarm_shoulder_link" link2="rightarm_SXRZ0030_MF4_link" reason="Never" />
     <disable_collisions link1="leftarm_shoulder_link" link2="rightarm_base_link_inertia" reason="Never" />
     <disable_collisions link1="leftarm_shoulder_link" link2="rightarm_forearm_link" reason="Never" />
     <disable_collisions link1="leftarm_shoulder_link" link2="rightarm_robotiq_coupler" reason="Never" />
