@@ -70,14 +70,22 @@
                                      rightarm/scaled_pos_joint_traj_controller rightarm/gripper_controller"/>
 
   <!-- TF -->
+
+  <!--
   <node pkg="robot_state_publisher" type="robot_state_publisher" 
-        name="state_publisher_rightarm" args="--namespace=rightarm"> 
+        name="state_publisher_rightarm" args="-REMOVE-namespace=rightarm"> 
     <param name="publish_frequency"  type="double" value="500" />
   </node>
 
   <node pkg="robot_state_publisher" type="robot_state_publisher" 
-        name="state_publisher_left_arm" args="--namespace=leftarm"> 
+        name="state_publisher_left_arm" args="-REMOVE-namespace=leftarm"> 
     <param name="publish_frequency"  type="double" value="500" />
   </node>
+  -->
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="state_publisher_left_arm" > 
+    <param name="publish_frequency"  type="double" value="500" />
+  </node>
+
 
 </launch>
