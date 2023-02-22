@@ -3,7 +3,7 @@
 
   <xacro:macro name="robotiq_hande_gripper_transmission" params="prefix">
 
-    <!-- <transmission name="${prefix}hande_left_finger_trans">
+    <transmission name="${prefix}hande_left_finger_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="${prefix}hande_left_finger_joint">
         <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
@@ -11,7 +11,7 @@
       <actuator name="${prefix}hande_left_finger_motor">
         <mechanicalReduction>1</mechanicalReduction>
       </actuator>
-    </transmission> -->
+    </transmission> 
     
     <transmission name="${prefix}hande_right_finger_trans">
       <type>transmission_interface/SimpleTransmission</type>
