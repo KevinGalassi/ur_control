@@ -39,6 +39,23 @@
     <xacro:include filename="$(find dual_ur_description)/urdf/robotiq_hande_gripper.urdf.xacro" />
     <xacro:robotiq_hande_gripper prefix="${prefix}" parent="${prefix}tool0" ft_prefix="${ft_prefix}"/>
 
+
+
+
+    <!-- DepthAI camera -->
+    <xacro:include filename="$(find dual_ur_description)/urdf/depthai_macro.urdf.xacro"/>
+    <xacro:depthai_camera camera_name   = "${prefix}oak" 
+                          parent        = "${prefix}tool0" 
+                          camera_model  = "OAK-D" 
+                          base_frame    = "${prefix}oak_pippo" 
+                          cam_pos_x     = "0.0017758721902284543" 
+                          cam_pos_y     = "0.05171514529791572"
+                          cam_pos_z     = "0.10236570223276018"
+                          cam_roll      = "0.0"
+                          cam_pitch     = "0.0" 
+                          cam_yaw       = "0.0" />
+
+
   </xacro:macro>
 
 </robot>

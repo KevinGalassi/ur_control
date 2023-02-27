@@ -55,7 +55,7 @@
 
         <!-- Attach the robotiq hand-e gripper -->
         <xacro:robotiq_hande_gripper prefix="${prefix}" parent="${parent}">
-            <origin xyz="0 0 0.004" rpy="${pi/2.0} 0 ${pi/2}"/>
+            <origin xyz="0 0 0.004" rpy="0 0 0"/>
         </xacro:robotiq_hande_gripper>
 
         <!-- Gazebo FT sensor plugin -->

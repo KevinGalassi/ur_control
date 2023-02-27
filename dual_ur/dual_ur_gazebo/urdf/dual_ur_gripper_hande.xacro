@@ -48,7 +48,7 @@
         safety_limits="$(arg safety_limits)"
         safety_pos_margin="$(arg safety_pos_margin)"
         safety_k_position="$(arg safety_k_position)"
-      >
+        >
         <origin xyz="0.0 +0.47 0.0" rpy="0.0 0.0 ${pi}" />
       </xacro:ur_gripper_hande>
 
