@@ -40,7 +40,7 @@
 
 
   <!-- Definition of the main macro -->
-  <xacro:macro name="ur_robot_gazebo" params="
+  <xacro:macro name="dual_ur" params="
    prefix
    joint_limits_parameters_file
    kinematics_parameters_file

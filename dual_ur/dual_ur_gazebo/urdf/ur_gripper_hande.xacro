@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur_robot_gazebo">
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="dual_ur">
 
   <xacro:macro name="ur_gripper_hande" params="
     prefix
@@ -16,7 +16,7 @@
   <xacro:include filename="$(find dual_ur_gazebo)/urdf/ur_macro.xacro"/>
 
     <!-- Instantiate the Gazebo robot and pass it all the required arguments. -->
-    <xacro:ur_robot_gazebo
+    <xacro:dual_ur
       prefix="${prefix}"
       joint_limits_parameters_file="${joint_limits_parameters_file}"
       kinematics_parameters_file="${kinematics_parameters_file}"
