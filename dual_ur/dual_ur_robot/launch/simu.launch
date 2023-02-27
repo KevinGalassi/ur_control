@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+
+
+   <!-- Launch Gazebo -->
+   <include file="$(find dual_ur_gazebo)/launch/dual_ur_gripper_hande.launch" >
+      <arg name="gui" value="false" />
+   </include>
+
+   <!-- Launch Moveit-->
+   <inlcude file="$(find dual_ur_moveit_config)/launch/start_sim_dual_ur_moveit.launch" />
+
+</launch>
