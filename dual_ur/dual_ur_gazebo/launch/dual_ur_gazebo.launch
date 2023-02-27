@@ -46,18 +46,18 @@
   -->
   <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model"
         args="-urdf -param robot_description -model robot
-              -J rightarm_shoulder_pan_joint 1.5353
+              -J rightarm_shoulder_pan_joint -1.5353
               -J rightarm_shoulder_lift_joint -1.211
               -J rightarm_elbow_joint -1.4186
               -J rightarm_wrist_1_joint -0.546
               -J rightarm_wrist_2_joint 1.6476
               -J rightarm_wrist_3_joint -0.0237
-              -J leftarm_shoulder_pan_joint 1.5353
+              -J leftarm_shoulder_pan_joint -1.507
               -J leftarm_shoulder_lift_joint -1.211
-              -J leftarm_elbow_joint -1.4186
-              -J leftarm_wrist_1_joint -0.546
-              -J leftarm_wrist_2_joint 1.6476
-              -J leftarm_wrist_3_joint -0.0237
+              -J leftarm_elbow_joint -1.57
+              -J leftarm_wrist_1_joint -2.26
+              -J leftarm_wrist_2_joint 1.507
+              -J leftarm_wrist_3_joint -1.13
               -unpause"
           output="screen" />
 

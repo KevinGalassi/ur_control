@@ -22,4 +22,15 @@
   <exec_depend>ur_robot_driver</exec_depend>
   <exec_depend>xacro</exec_depend>
 
+
+  <depend>roscpp</depend>
+
+
+  <depend>geometry_msgs</depend>
+  <depend>moveit_visual_tools</depend>
+  <depend>moveit_core</depend>
+  <depend>moveit_ros_planning_interface</depend>
+  <depend>moveit_msgs</depend>
+  <depend>tf</depend>
+  <depend>tf_conversions</depend>
 </package>

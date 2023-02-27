@@ -3,8 +3,34 @@ project(dual_ur_robot)
 
 find_package(catkin REQUIRED )
 
-catkin_package(
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  geometry_msgs
+  tf
+  tf_conversions
+  moveit_msgs
+  moveit_core
+  moveit_visual_tools
+  moveit_ros_planning_interface
+  rospy
 )
+
+
+catkin_package(
+  CATKIN_DEPENDS
+  geometry_msgs
+  tf
+  tf_conversions
+  moveit_msgs 
+  moveit_core
+  moveit_visual_tools
+  moveit_ros_planning_interface
+
+  roscpp
+)
+
+catkin_python_setup()
+
 
 install(FILES etc/rightarm_controllers.yaml etc/leftarm_controllers.yaml etc/view_robot.rviz
         DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/etc
@@ -38,3 +64,9 @@ install(FILES scripts/docker_rightarm_leftarm.sh
 install(FILES urdf/dual_robot.xacro
         DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
 )
+
+
+include_directories(${catkin_INCLUDE_DIRS})
+add_executable(collision_object_publisher src/collision_object/collision_object_publisher.cpp)
+target_link_libraries(collision_object_publisher ${catkin_LIBRARIES} ${OCTOMAP_LIBRARIES})
+

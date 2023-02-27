@@ -19,6 +19,10 @@
   <param name="request_adapters" value="$(arg planning_adapters)" />
   <param name="start_state_max_bounds_error" value="$(arg start_state_max_bounds_error)" />
 
+
+  <param name="default_planner_config" value="LIN" />
+
+
   <!-- MoveGroup capabilities to load, append sequence capability -->
   <param name="capabilities" value="$(arg capabilities)
                                     pilz_industrial_motion_planner/MoveGroupSequenceAction

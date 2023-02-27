@@ -3,5 +3,10 @@
       "/home/kvn/ros/ur_ws/devel/lib/python3/dist-packages",
       "/opt/ros/noetic/lib/python3/dist-packages",
       "/home/kvn/PyFlex/bindings/build"
+   ],
+   "python.analysis.extraPaths": [
+      "/home/kvn/ros/ur_ws/devel/lib/python3/dist-packages",
+      "/opt/ros/noetic/lib/python3/dist-packages",
+      "/home/kvn/PyFlex/bindings/build"
    ]
 }

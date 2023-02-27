@@ -32,10 +32,18 @@ for moveit
 roslaunch dual_ur_moveit_config start_sim_dual_ur_moveit.launch 
 ```
 
+if mesh are not visiible :
+```
+export LC_NUMERIC="en_US.UTF-8"
+```
+
+
+
+
 # TODO
 
-- [ ] Fix Joint for gripper
+- [x] Fix Joint for gripper
 - [x] Remove unused files
-- [ ] Create group with dual robot in moveit
-- [ ] create group with hand + robot
-- [ ] Replace file name
+- [x] Create group with dual robot in moveit
+- [x] create group with hand + robot
+- [x] Replace file name

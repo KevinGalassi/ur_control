@@ -15,32 +15,10 @@
     <group name="rightarm">
         <chain base_link="rightarm_base_link" tip_link="rightarm_tool0" />
     </group>
-    <group name="leftarm_hand">
-        <joint name="leftarm_robotiq_coupler_joint" />
-        <joint name="leftarm_manipulator_dummy_joint" />
-        <joint name="leftarm_robotiq_hande_base_joint" />
-        <joint name="leftarm_hande_left_finger_joint" />
-    </group>
-    <group name="rightarm_hand">
-        <joint name="rightarm_robotiq_coupler_joint" />
-        <joint name="rightarm_manipulator_dummy_joint" />
-        <joint name="rightarm_robotiq_hande_base_joint" />
-        <joint name="rightarm_hande_left_finger_joint" />
-    </group>
 
     <group name="dual_ur">
-        <joint name="leftarm_elbow_joint"  />
-        <joint name="leftarm_shoulder_lift_joint"  />
-        <joint name="leftarm_shoulder_pan_joint" />
-        <joint name="leftarm_wrist_1_joint" />
-        <joint name="leftarm_wrist_2_joint"  />
-        <joint name="leftarm_wrist_3_joint"  />
-        <joint name="rightarm_elbow_joint"  />
-        <joint name="rightarm_shoulder_lift_joint"  />
-        <joint name="rightarm_shoulder_pan_joint" />
-        <joint name="rightarm_wrist_1_joint" />
-        <joint name="rightarm_wrist_2_joint"  />
-        <joint name="rightarm_wrist_3_joint"  />
+        <group name="leftarm"/>
+        <group name="rightarm"/>
     </group>
 
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
@@ -60,9 +38,9 @@
         <joint name="leftarm_wrist_2_joint" value="1.6476" />
         <joint name="leftarm_wrist_3_joint" value="1.567" />
     </group_state>
+
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="leftarm_hand" parent_link="leftarm_tool0" group="leftarm_hand" parent_group="leftarm" />
-    <end_effector name="rightarm_hand" parent_link="rightarm_tool0" group="rightarm_hand" parent_group="rightarm" />
+    
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="virtual_joint" type="fixed" parent_frame="virtual_joint" child_link="world" />
     <!--PASSIVE JOINT: Purpose: this element is used to mark joints that are not actuated-->
