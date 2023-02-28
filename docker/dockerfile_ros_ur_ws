@@ -1,0 +1,45 @@
+# UR5 DOCKER INSTALALTION
+
+FROM ros_ur:latest
+
+
+RUN mkdir -p /ros_ws/src
+WORKDIR /ros_ws
+
+# Clone the Git repository into the workspace
+RUN cd src && \
+    git clone https://github.com/KevinGalassi/ur_control.git
+
+RUN . /opt/ros/noetic/setup.sh && \
+    catkin build
+
+RUN apt-get install -y libxcb-util1
+RUN apt-get install python3-pyqt5 -y
+
+RUN pip3 install pyqt5
+
+RUN apt-get update && \
+    apt-get install -y libqt5gui5 && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN export LC_NUMERIC="en_US.UTF-8"
+
+
+# Install dependencies and compile the workspacex\x\
+#RUN rosdep update && \
+#    rosdep install --from-paths src --ignore-src -r -y && \
+#    catkin build
+
+
+#
+
+# Set up ROS environment variables
+#ENV ROS_MASTER_URI=http://localhost:11311 \
+#    ROS_HOSTNAME=localhost
+
+# Start RVIZ when the container starts
+RUN echo 'source devel/setup.bash' >> ~/.bashrc
+
+#CMD roslaunch dual_ur_moveit_config demo.launch
+
+CMD source devel/setup.bash 
