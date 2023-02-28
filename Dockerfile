@@ -63,3 +63,43 @@ RUN apt update && apt install -y ros-noetic-rqt && \
 	apt install -y ros-noetic-viz && \
 	apt install -y ros-noetic-gazebo-ros-pkgs && \
 	apt install -y ros-noetic-gazebo-ros-control
+
+
+# UR packages 
+RUN apt-get install -y ros-noetic-ur-client-library && \ 
+   apt-get install -y ros-noetic-industrial-robot-status-interface && \ 
+   apt-get install -y ros-noetic-ur-msgs && \ 
+   apt-get install -y ros-noetic-scaled-joint-trajectory-controller && \ 
+   apt-get install -y ros-noetic-speed-scaling-interface && \ 
+   apt-get install -y ros-noetic-speed-scaling-state-controller && \ 
+   apt-get install -y ros-noetic-pass-through-controllers && \ 
+   apt-get install -y ros-noetic-gazebo-ros-control &&\
+   apt-get install -y ros-noetic-robot && \
+   apt-get install -y ros-noetic-trac-ik
+
+
+
+
+
+RUN mkdir -p /ros_ws/src
+WORKDIR /ros_ws
+
+# Clone the Git repository into the workspace
+RUN cd src && \
+    git clone https://github.com/KevinGalassi/ur_control.git
+
+RUN . /opt/ros/noetic/setup.sh && \
+    catkin build
+
+
+RUN export LC_NUMERIC="en_US.UTF-8"
+
+
+# Start RVIZ when the container starts
+RUN echo 'source devel/setup.bash' >> ~/.bashrc
+
+#CMD roslaunch dual_ur_moveit_config demo.launch
+
+CMD source devel/setup.bash 
+
+
