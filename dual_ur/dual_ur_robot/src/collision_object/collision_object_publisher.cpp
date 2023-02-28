@@ -12,7 +12,8 @@
 #include "geometric_shapes/shapes.h"
 #include "geometric_shapes/mesh_operations.h"
 #include "geometric_shapes/shape_operations.h"
-
+#include "geometry_msgs/Pose.h"
+#include "geometry_msgs/Quaternion.h"
 
 #include "visualization_msgs/MarkerArray.h"
 #include "visualization_msgs/Marker.h"
@@ -34,7 +35,6 @@ int main(int argc, char** argv)
     moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
 
     planning_scene_interface.applyCollisionObject(addTableCO());
-    //planning_scene_interface.applyCollisionObject(addSwitchgearCO());
     //planning_scene_interface.applyCollisionObject(addSideCO());
     //planning_scene_interface.applyCollisionObject(addBackCO());
 
@@ -72,14 +72,18 @@ moveit_msgs::CollisionObject addTableCO()
     robot_base.primitives.resize(1);
     robot_base.primitives[0].type = robot_base.primitives[0].BOX;
     robot_base.primitives[0].dimensions.resize(3);
-    robot_base.primitives[0].dimensions[0] = 2;
-    robot_base.primitives[0].dimensions[1] = 1;
+    robot_base.primitives[0].dimensions[0] = 1;
+    robot_base.primitives[0].dimensions[1] = 2;
     robot_base.primitives[0].dimensions[2] = 0.03;
 
     robot_base.primitive_poses.resize(1);
     robot_base.primitive_poses[0].position.x = 0.7;
     robot_base.primitive_poses[0].position.y = 0;
     robot_base.primitive_poses[0].position.z = 0;
+    robot_base.primitive_poses[0].orientation.x = 0.0;
+    robot_base.primitive_poses[0].orientation.y = 0.0;
+    robot_base.primitive_poses[0].orientation.z = 0.0;
+    robot_base.primitive_poses[0].orientation.w = 1.0;
     robot_base.operation = robot_base.ADD;
 
     return robot_base;
@@ -129,31 +133,6 @@ moveit_msgs::CollisionObject addBackCO()
     robot_base.operation = robot_base.ADD;
 
     return robot_base;
-}
-
-
-
-moveit_msgs::CollisionObject addSwitchgearCO()
-{
-    moveit_msgs::CollisionObject switchgear;
-    switchgear.id = "switchgear";
-    switchgear.header.frame_id = "world";
-
-    switchgear.primitives.resize(1);
-    switchgear.primitives[0].type = switchgear.primitives[0].BOX;
-    switchgear.primitives[0].dimensions.resize(3);
-    switchgear.primitives[0].dimensions[0] = 0.6;
-    switchgear.primitives[0].dimensions[1] = 0.6;
-    switchgear.primitives[0].dimensions[2] = 0.1;
-
-    switchgear.primitive_poses.resize(1);
-    switchgear.primitive_poses[0].position.x = 0.50;
-    switchgear.primitive_poses[0].position.y = 0.20;
-    switchgear.primitive_poses[0].position.z = 0.02;
-
-    switchgear.operation = switchgear.ADD;
-
-    return switchgear;
 }
 
 
