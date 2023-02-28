@@ -25,6 +25,24 @@
   
 
 
+
+    <!-- DepthAI camera -->
+    <xacro:include filename="$(find dual_ur_description)/urdf/depthai_macro.urdf.xacro"/>
+    <xacro:depthai_camera camera_name   = "rightarm_oak" 
+                          parent        = "rightarm_tool0" 
+                          camera_model  = "OAK-D" 
+                          base_frame    = "rightarm_oak_pippo" 
+                          cam_pos_x     = "0.0017758721902284543" 
+                          cam_pos_y     = "0.05171514529791572"
+                          cam_pos_z     = "0.10236570223276018"
+                          cam_roll      = "0.0"
+                          cam_pitch     = "0.0" 
+                          cam_yaw       = "0.0" />
+
+
+
+
+
   <!--common link where the tf tree originates from-->
   <link name="world"/>
 
