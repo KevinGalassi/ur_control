@@ -13,14 +13,13 @@ RUN cd src && \
 RUN . /opt/ros/noetic/setup.sh && \
     catkin build
 
-RUN apt-get install -y libxcb-util1
-RUN apt-get install python3-pyqt5 -y
+#RUN apt-get install -y libxcb-util1
+#RUN apt-get install python3-pyqt5 -y
+#RUN pip3 install pyqt5
 
-RUN pip3 install pyqt5
-
-RUN apt-get update && \
-    apt-get install -y libqt5gui5 && \
-    rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && \
+#    apt-get install -y libqt5gui5 && \
+#    rm -rf /var/lib/apt/lists/*
 
 RUN export LC_NUMERIC="en_US.UTF-8"
 
