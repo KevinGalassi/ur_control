@@ -74,12 +74,12 @@ moveit_msgs::CollisionObject addTableCO()
     robot_base.primitives[0].dimensions.resize(3);
     robot_base.primitives[0].dimensions[0] = 1;
     robot_base.primitives[0].dimensions[1] = 2;
-    robot_base.primitives[0].dimensions[2] = 0.03;
+    robot_base.primitives[0].dimensions[2] = 0.01;
 
     robot_base.primitive_poses.resize(1);
-    robot_base.primitive_poses[0].position.x = 0.7;
+    robot_base.primitive_poses[0].position.x = 0.0;
     robot_base.primitive_poses[0].position.y = 0;
-    robot_base.primitive_poses[0].position.z = 0;
+    robot_base.primitive_poses[0].position.z = -0.004;
     robot_base.primitive_poses[0].orientation.x = 0.0;
     robot_base.primitive_poses[0].orientation.y = 0.0;
     robot_base.primitive_poses[0].orientation.z = 0.0;
