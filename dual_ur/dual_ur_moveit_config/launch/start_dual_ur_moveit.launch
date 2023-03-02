@@ -54,6 +54,7 @@
     <arg name="info" value="true"/>
     <arg name="debug" value="$(arg debug)"/>
     <arg name="load_robot_description" value="false" />
+    <arg name="pipeline" value="pilz_industrial_motion_planner" /> <!-- pilz_industrial_motion_planner, ompl -->
   </include>  
   <!-- </group> -->
 

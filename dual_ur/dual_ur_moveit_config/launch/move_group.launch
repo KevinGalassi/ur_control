@@ -61,6 +61,7 @@
 
 
     <param name="trajectory_execution/allow_trajectory_execution_scaling" value="4.0" />
+    <param name="trajectory_execution/allow_replanning" value="true" />
 
 
     <!-- Publish the planning scene of the physical robot so that rviz plugin can know actual robot -->

@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
 <launch>
+
+  <arg name="right_gripper_active" default="true"/>
+  <arg name="left_gripper_active" default="true"/>
+
+
   <!--rightarm's arguments-->
   <arg name="rightarm_kinematics"               default="$(find dual_ur_robot)/config/robot_calibration_ur5.yaml"/>
   <arg name="rightarm_controller_config_file"   default="$(find dual_ur_robot)/etc/rightarm_controllers.yaml"/>
@@ -44,6 +49,14 @@
       <arg name="controllers" value="$(arg controllers)"/>
       <arg name="stopped_controllers" value="$(arg stopped_controllers)"/>
     </include>
+
+    <group if="$(arg right_gripper_active)">
+      <include file="$(find robotiq_2f_gripper_control)/launch/robotiq_action_server.launch">
+        <arg name="comport" value="/dev/ttyUSB0"/>
+        <arg name="joint_name" value="rightarm_hande_left_finger_joint"/>
+      </include>
+    </group>
+
   </group>
 
   <group ns="leftarm">
@@ -62,9 +75,26 @@
       <arg name="controllers" value="$(arg controllers)"/>
       <arg name="stopped_controllers" value="$(arg stopped_controllers)"/>
     </include>
+
+
+    <group if="$(arg left_gripper_active)">
+      <include file="$(find robotiq_2f_gripper_control)/launch/robotiq_action_server.launch">
+        <arg name="comport" value="/dev/ttyUSB0"/>
+        <arg name="joint_name" value="leftarm_hande_left_finger_joint"/>
+      </include>
+    </group>
+
   </group>
 
   <!--Convenience stuff for demo purposes-->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dual_ur_robot)/etc/view_robot.rviz" required="true" />
+
+  <node name="rgb_publisher" pkg="depthai_examples" type="rgb_node" output="screen" required="true">
+      <param name="tf_prefix"        value="oak"/>
+      <param name="camera_param_uri" value="package://depthai_examples/params/camera"/>
+  </node> 
+
+
+
 
 </launch>
